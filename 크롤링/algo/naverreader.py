@@ -22,8 +22,13 @@ class naverreader:
     회사 종목명과 코드를 담고 있는 DataFrame.)
     """
     def __init__(self):
-        self.full_code = pd.read_pickle('./full_code.pickle')
-        self.companies = pd.read_pickle('./naver_companies.pickle')
+        self.full_code = pd.read_pickle('./full_code.pickle') 
+        ## full_code.pickle이라는 파일은 한국거래소에서 종목명과 코드를 받아온 파일입니다. 디렉토리에 저장해두고 불러오기 했습니다.
+        ## 네이버에서 주가를 추출하려면 기본적으로 종목코드 데이터가 필요해서 미리 가져왔습니다.
+        ## 거래소에서 종목코드를 불러오는 코드는 추후에 올리겠습니다.
+        self.companies = pd.read_pickle('./naver_companies.pickle') 
+        ## naver_companies는 네이버 금융에서 다루는 코스피, 코스닥 전 종목의 종목명, 종목코드를 넣어둔 파일입니다. 원래는 이 클래스를 처음
+        ## naverreader 클래스의 get_naver_companies를 통해 처음에 파일을 만든 것이고, 이후에는 계속 불러오게 했습니다. 
 
     def get_stock_price(self, num_code, days):
         """
